@@ -4,30 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import angularmail.modelo.Usuario;
 
 
-public class UsuarioControlador {
 
-	// Instancia estática típica de un patrón singleton
-	private static UsuarioControlador controller = null;
-	// EntityManagerFactory que necesitamos para obtener objetos EntityManager, para poder operar con entidades
-	private static EntityManagerFactory entityManagerFactory;
+public class UsuarioControlador extends Controlador {
+
+	private static UsuarioControlador controller = null; // Instancia para Singleton
 	
 	/**
-	 * 
+	 * Constructor, que inicializa al Super Controlador con la clase Usuario.class
 	 */
 	public UsuarioControlador() {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("AngularMailModulo01"); // Conexión con el persistence.xml
+		super(Usuario.class);
 	}
 
 	/**
-	 * Método para obtener un Singleton, la instancia estática "controller", de la línea 20
+	 * Método para obtener la instancia Singleton
 	 * @return
 	 */
 	public static UsuarioControlador getControlador () {
@@ -38,34 +34,57 @@ public class UsuarioControlador {
 	}
 
 	/**
-	 * Un método simple para obtener un usuario
+	 * Para hacer un "find sencillo" llamo al método find del Super Controlador. Ese
+	 * método devuelve una entidad y en este método hacemos un casting para convertir
+	 * en la entidad que controla este controlador
 	 */
 	public Usuario find (int id) {
-		return this.entityManagerFactory.createEntityManager().find(Usuario.class, id);
+		return (Usuario) super.find(id);
 	}
 
 
 
 	
 	/**
-	 * Método para obtener un listado de todos los usuarios
+	 * Método para hacer un "findAll", devolver un listado con todas las entidades del 
+	 * tipo de la clase controlada por este controlador.
 	 * @return
 	 * @throws NoResultException
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Usuario> findAll () {
-		List<Usuario> entities = new ArrayList<Usuario>(); // Creo una lista vacía de usuarios
-		EntityManager em = this.entityManagerFactory.createEntityManager(); // Obtengo el EntityManager
+		List<Usuario> entities = new ArrayList<Usuario>();
+		EntityManager em = getEntityManagerFactory().createEntityManager();
 		try {			
-			Query q = em.createQuery("SELECT o FROM Usuario o", Usuario.class); // JPQL para obtener todos los usuarios
-			entities = (List<Usuario>) q.getResultList(); // Ejecución de la Query
+			Query q = em.createQuery("SELECT o FROM Usuario o", Usuario.class);
+			entities = (List<Usuario>) q.getResultList();
 		}
-		catch (NoResultException nrEx) { // En caso de que no se encuentren resultados, no hago nada
+		catch (NoResultException nrEx) {
 		}
-		em.close(); // Cierro el entityManager y devuelvo el listado de entidades
+		em.close();
 		return entities;
 	}
 
-
 	
+	/**
+	 * Método para hacer un "findAll", devolver un listado con todas las entidades del 
+	 * tipo de la clase controlada por este controlador.
+	 * @return
+	 * @throws NoResultException
+	 */
+	@SuppressWarnings("unchecked")
+	public Usuario findByUsuario (String nombreUsuario) {
+		Usuario entity = null;
+		EntityManager em = getEntityManagerFactory().createEntityManager();
+		try {			
+			Query q = em.createNativeQuery("SELECT * FROM usuario u where u.usuario = ?", Usuario.class);
+			q.setParameter(1, nombreUsuario);
+			entity = (Usuario) q.getSingleResult();
+		}
+		catch (NoResultException nrEx) {
+		}
+		em.close();
+		return entity;
+	}
+
 }
