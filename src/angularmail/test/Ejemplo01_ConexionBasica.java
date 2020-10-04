@@ -11,7 +11,7 @@ public class Ejemplo01_ConexionBasica {
 
 	/**
 	 * 
-	 */
+	 */ 
 	public static void main (String args[]) {
 		try {
 			// A través de la siguiente línea comprobamos si tenemos acceso al driver MySQL, si no fuera así
