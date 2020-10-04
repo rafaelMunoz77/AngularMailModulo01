@@ -49,10 +49,10 @@ public class Usuario implements Serializable {
 	@JoinColumn(name="idNacionalidad")
 	private Nacionalidad nacionalidad;
 
-	//bi-directional many-to-one association to Tiposexo
+	//bi-directional many-to-one association to TipoSexo
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoSexo")
-	private Tiposexo tipoSexo;
+	private TipoSexo tipoSexo;
 
 	public Usuario() {
 	}
@@ -173,11 +173,11 @@ public class Usuario implements Serializable {
 		this.nacionalidad = nacionalidad;
 	}
 
-	public Tiposexo getTipoSexo() {
+	public TipoSexo getTipoSexo() {
 		return this.tipoSexo;
 	}
 
-	public void setTipoSexo(Tiposexo tipoSexo) {
+	public void setTipoSexo(TipoSexo tipoSexo) {
 		this.tipoSexo = tipoSexo;
 	}
 
