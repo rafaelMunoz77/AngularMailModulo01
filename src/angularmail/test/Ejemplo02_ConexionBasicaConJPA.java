@@ -19,7 +19,7 @@ public class Ejemplo02_ConexionBasicaConJPA {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//obtencionUnaSolaEntidad();
+		obtencionUnaSolaEntidad();
 		//obtencionUnaSolaEntidadSegundoMetodo();
 		//obtencionUnaSolaEntidadTercerMetodo();
 		//listadoEntidades();
@@ -27,7 +27,7 @@ public class Ejemplo02_ConexionBasicaConJPA {
 		//listadoEntidadesTercerMetodo();
 		//creacionEntidad();
 		//modificacionEntidad();
-		eliminacionEntidad();
+		//eliminacionEntidad();
 	}
 
 	
