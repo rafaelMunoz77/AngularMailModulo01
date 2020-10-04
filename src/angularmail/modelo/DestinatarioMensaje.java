@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @NamedQuery(name="DestinatarioMensaje.findAll", query="SELECT d FROM DestinatarioMensaje d")
-public class DestinatarioMensaje implements Serializable {
+public class DestinatarioMensaje extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
