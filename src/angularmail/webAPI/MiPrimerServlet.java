@@ -25,8 +25,12 @@ public class MiPrimerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("GET - Hola Mundo");
+		if (request.getParameter("idUsuario") != null) {
+			String strId = request.getParameter("idUsuario");
+			System.out.println("El valor del parámetro 'idUsuario' es: " + strId);
+			response.getWriter().append("GET - Hola Mundo - Parámetro 'idUsuario': " + strId);
+		}
+		
 	}
 
 	/**
