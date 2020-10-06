@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MiPrimerServlet
  */
-@WebServlet("/MiPrimerServlet")
+//@WebServlet("/MiPrimerServlet")
 public class MiPrimerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
