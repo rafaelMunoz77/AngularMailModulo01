@@ -52,6 +52,9 @@ public class AutenticaUsuario extends HttpServlet{
 				dto.put("email", usuarioAutenticado.getEmail());
 				dto.put("fechaNac", usuarioAutenticado.getFechaNacimiento());
 
+				// Guardo el usuario autenticado en la sesión de trabajo del cliente en el servidor
+				request.getSession().setAttribute("usuarioAutenticado", usuarioAutenticado);
+				
 				response.getWriter().println(mapper.writeValueAsString(dto)); // Devuelvo el DTO, en formato JSON
 				return;
 			}

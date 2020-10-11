@@ -65,4 +65,28 @@ public class MensajeControlador extends Controlador {
 		return entities;
 	}
 
+	
+	/**
+	 * 
+	 * @return
+	 * @throws NoResultException
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Mensaje> findMensajesBandejaEntradaDeUsuario (int idUsuario) {
+		List<Mensaje> entities = new ArrayList<Mensaje>();
+		EntityManager em = getEntityManagerFactory().createEntityManager();
+		try {			
+			Query q = em.createNativeQuery("SELECT distinct m.* FROM Mensaje as m, destinatarioMensaje as d where "
+					+ "d.idMensaje = m.id and d.idDestinatario = ? and "
+					+ "d.archivado = 0 and d.spam = 0 and d.fechaEliminacion is null order by m.fecha desc", Mensaje.class);
+			q.setParameter(1, idUsuario);
+			entities = (List<Mensaje>) q.getResultList();
+		}
+		catch (NoResultException nrEx) {
+		}
+		em.close();
+		return entities;
+	}
+
+
 }
