@@ -1,6 +1,8 @@
 package angularmail.webAPI;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import angularmail.modelo.Usuario;
 import angularmail.modelo.controladores.UsuarioControlador;
@@ -32,12 +36,20 @@ public class MiPrimerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Usuario> usuarios = UsuarioControlador.getControlador().findAll();
 		
+		List<DTO> listaAEnviar = new ArrayList<DTO>();
 		
-		response.getWriter().append("<html><body><table border='1'>");
 		for (Usuario u : usuarios) {
-			response.getWriter().append("<tr><td>Usuario: " + u.getEmail() + "</td></tr>");
+			DTO dto = new DTO(); 
+			dto.put("id", u.getId());
+			dto.put("nombre", u.getNombre());
+			dto.put("email", u.getEmail());
+			
+			listaAEnviar.add(dto);
 		}
-		response.getWriter().append("</table></body></html>");
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		response.getWriter().append(mapper.writeValueAsString(listaAEnviar));
 	}
 
 	/**
