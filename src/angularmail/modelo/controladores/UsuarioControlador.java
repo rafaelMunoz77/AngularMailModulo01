@@ -86,5 +86,29 @@ public class UsuarioControlador extends Controlador {
 		em.close();
 		return entity;
 	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws NoResultException
+	 */
+	@SuppressWarnings("unchecked")
+	public Usuario findByUsuarioAndPassword (String usuario, String password) {
+		Usuario entity = new Usuario();
+		EntityManager em = getEntityManagerFactory().createEntityManager();
+		try {			
+			Query q = em.createNativeQuery("SELECT * FROM Usuario where usuario = ? and password = ?", Usuario.class);
+			q.setParameter(1, usuario);
+			q.setParameter(2, password);
+			entity = (Usuario) q.getSingleResult();
+		}
+		catch (NoResultException nrEx) {
+			return null;
+		}
+		em.close();
+		return entity;
+	}
+
 
 }
