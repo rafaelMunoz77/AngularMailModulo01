@@ -1,0 +1,25 @@
+{
+	"usuarios": [
+		{
+			"id": 1,
+			"nombre": "Rafa",
+			"usuario": "rafa",
+			"password": "81dc9bdb52d04dc20036dbd8313ed055",
+			"email": "rafa@rafa.com"
+		},
+		{
+			"id": 2,
+			"nombre": "Carmen",
+			"usuario": "carmen",
+			"password": "81dc9bdb52d04dc20036dbd8313ed055",
+			"email": "carmen@carmen.com"
+		}, 
+		{
+			"id": 3,
+			"nombre": "Juan",
+			"usuario": "juan",
+			"password": "81dc9bdb52d04dc20036dbd8313ed055",
+			"email": "juan@juan.com"
+		}
+	]
+}

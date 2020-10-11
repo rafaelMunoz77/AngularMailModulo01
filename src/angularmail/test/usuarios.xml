@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usuarios>
+	<usuario>
+		<id>1</id>
+		<nombre>Rafa</nombre>
+		<usuario>rafa</usuario>
+		<password>81dc9bdb52d04dc20036dbd8313ed055</password>
+		<email>rafa@rafa.com</email>
+	</usuario>
+	<usuario>
+		<id>2</id>
+		<nombre>Carmen</nombre>
+		<usuario>carmen</usuario>
+		<password>81dc9bdb52d04dc20036dbd8313ed055</password>
+		<email>carmen@carmen.com</email>
+	</usuario>
+	<usuario>
+		<id>3</id>
+		<nombre>Juan</nombre>
+		<usuario>juan</usuario>
+		<password>81dc9bdb52d04dc20036dbd8313ed055</password>
+		<email>juan@juan.com</email>
+	</usuario>
+</usuarios>
