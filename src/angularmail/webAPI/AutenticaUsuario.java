@@ -46,14 +46,10 @@ public class AutenticaUsuario extends HttpServlet{
 			// Si el usuario existe, creo un DTO para devolverlo en formato JSON
 			if (usuarioAutenticado != null) { // Se ha autenticado al usuario
 				DTO dto = new DTO (); // Construyo el dto
-				dto.put("id", usuarioAutenticado.getId());
-				dto.put("nombre", usuarioAutenticado.getNombre());
-				dto.put("usuario", usuarioAutenticado.getUsuario());
-				dto.put("email", usuarioAutenticado.getEmail());
-				dto.put("fechaNac", usuarioAutenticado.getFechaNacimiento());
 
-				// Guardo el usuario autenticado en la sesión de trabajo del cliente en el servidor
-				request.getSession().setAttribute("usuarioAutenticado", usuarioAutenticado);
+				// Crea una cadena JWT, que ha codificado en su interior el id del usuario autenticado
+				String jwtStr = AutenticadorJWT.codificaJWT(usuarioAutenticado);
+				dto.put("jwt", jwtStr);
 				
 				response.getWriter().println(mapper.writeValueAsString(dto)); // Devuelvo el DTO, en formato JSON
 				return;
