@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="librerias/Jackson/jackson-annotations-2.9.0.jar"/>
 	<classpathentry kind="lib" path="librerias/Jackson/jackson-core-2.9.5.jar"/>
 	<classpathentry kind="lib" path="librerias/Jackson/jackson-databind-2.9.5.jar"/>
+	<classpathentry kind="lib" path="librerias/Java JSON Web Token (JWT)/jjwt-0.9.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
