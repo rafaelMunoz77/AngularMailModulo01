@@ -2,6 +2,7 @@ package angularmail.modelo;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,29 +12,38 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name = "usuario")
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private int id;
 
+	@Column(name="email")
 	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="fechaEliminacion")
 	private Date fechaEliminacion;
 
 	@Temporal(TemporalType.DATE)
+	@Column(name="fechaNacimiento")
 	private Date fechaNacimiento;
 
 	@Lob
+	@Column(name="imagen")
 	private byte[] imagen;
 
+	@Column(name="nombre")
 	private String nombre;
 
+	@Column(name="password")
 	private String password;
 
+	@Column(name="usuario")
 	private String usuario;
 
 	//bi-directional many-to-one association to DestinatarioMensaje
@@ -49,10 +59,10 @@ public class Usuario implements Serializable {
 	@JoinColumn(name="idNacionalidad")
 	private Nacionalidad nacionalidad;
 
-	//bi-directional many-to-one association to Tiposexo
+	//bi-directional many-to-one association to TipoSexo
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoSexo")
-	private Tiposexo tipoSexo;
+	private TipoSexo tipoSexo;
 
 	public Usuario() {
 	}
@@ -173,11 +183,11 @@ public class Usuario implements Serializable {
 		this.nacionalidad = nacionalidad;
 	}
 
-	public Tiposexo getTipoSexo() {
+	public TipoSexo getTipoSexo() {
 		return this.tipoSexo;
 	}
 
-	public void setTipoSexo(Tiposexo tipoSexo) {
+	public void setTipoSexo(TipoSexo tipoSexo) {
 		this.tipoSexo = tipoSexo;
 	}
 
