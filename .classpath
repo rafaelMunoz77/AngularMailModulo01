@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="librerias/EclipseLink2.5.2/jlib/moxy/javax.xml.bind_2.2.0.v201105210648.jar"/>
 	<classpathentry kind="lib" path="librerias/EclipseLink2.5.2/jlib/moxy/javax.xml.stream_1.0.1.v201004272200.jar"/>
 	<classpathentry kind="lib" path="librerias/EclipseLink2.5.2/jlib/eclipselink.jar"/>
+	<classpathentry kind="lib" path="librerias/MySQL-Connector-Java-8/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
