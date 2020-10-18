@@ -14,29 +14,38 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name = "usuario")
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private int id;
 
+	@Column(name="email")
 	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="fechaEliminacion")
 	private Date fechaEliminacion;
 
 	@Temporal(TemporalType.DATE)
+	@Column(name="fechaNacimiento")
 	private Date fechaNacimiento;
 
 	@Lob
+	@Column(name="imagen")
 	private byte[] imagen;
 
+	@Column(name="nombre")
 	private String nombre;
 
+	@Column(name="password")
 	private String password;
 
+	@Column(name="usuario")
 	private String usuario;
 
 	//bi-directional many-to-one association to DestinatarioMensaje
@@ -46,7 +55,7 @@ public class Usuario extends Entidad implements Serializable {
 
 	//bi-directional many-to-one association to Mensaje
 	@OneToMany(mappedBy="usuarioEmisor")
-	@JsonIgnore	
+	@JsonIgnore
 	private List<Mensaje> mensajes;
 
 	//bi-directional many-to-one association to Nacionalidad
