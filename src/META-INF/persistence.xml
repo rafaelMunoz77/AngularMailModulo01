@@ -9,7 +9,7 @@
 		<class>angularmail.modelo.Mensaje</class>
 		<class>angularmail.modelo.Nacionalidad</class>
 		<class>angularmail.modelo.Usuario</class>
-		<properties>
+		<properties>  
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"	value="jdbc:mysql://127.0.0.1:3306/angularmail?serverTimezone=Europe/Madrid" />
 			<property name="javax.persistence.jdbc.user" value="angularmail" />
