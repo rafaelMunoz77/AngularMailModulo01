@@ -10,17 +10,14 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name = "nacionalidad")
 @NamedQuery(name="Nacionalidad.findAll", query="SELECT n FROM Nacionalidad n")
 public class Nacionalidad extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	@Column(name="descripcion")
 	private String descripcion;
 
 	//bi-directional many-to-one association to Usuario
